@@ -1,42 +1,67 @@
+
 <!DOCTYPE html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Веб-сайт</title><link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Веб-сайт</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-      <h1>Добро пожаловать</h1>
-      <nav>
-        <a href="#home">Главная</a>
-        <a href="#gallery">Галерея</a>
-        <a href="#about">О нас</a>
-      </nav>
-    </header>
-    <section id="home">
-      <h2>Главная страница</h2>
-      <p>Просто сайтик</p>
-    </section>
-  
-    <section id="gallery">
-      <h2>Галерея</h2>
-      <div id="photo-area">
-        <!-- Здесь можно вставлять фото -->
-        <img src="img/foto1.jpg" alt="Фото 1" />
-        <img src="img/foto2.jpg" alt="Фото 2" />
-      </div>
-      <button id="addPhotoBtn">Добавить фото</button>
-    </section>
-  
-    <section id="about">
-      <h2>О нас</h2>
-      <p>Небольшая информация о сайте.</p>
-    </section>
-  
-    <footer>
-      © 2024 Сайтик
-    </footer>
-  
-    <script src="script.js"></script>
-  </body>
-  </html>
+  <header>Маркетплейс</header>
+
+  <main>
+    <h2>Наши товары</h2>
+    <div class="products" id="products">
+      <!-- Карточки товаров появятся здесь -->
+    </div>
+  </main>
+
+  <footer>© 2024 Маркетплейс</footer>
+
+  <script>
+    const products = [
+      {
+        name: 'Стильные наушники',
+        description: 'Высокое качество звука, удобная посадка и современный дизайн.',
+        price: '3500 ₽',
+        img: 'https://images.unsplash.com/photo-1516728778615-2d590ea1856f?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        name: 'Смарт-часы',
+        description: 'Отслеживайте активность и получайте уведомления прямо на руку.',
+        price: '5000 ₽',
+        img: 'https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        name: 'Портативная колонка',
+        description: 'Мощный звук в компактном формате для любого праздника.',
+        price: '2700 ₽',
+        img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        name: 'Экшн-камера',
+        description: 'Записывайте яркие моменты вашей жизни в высоком разрешении.',
+        price: '8500 ₽',
+        img: 'https://images.unsplash.com/photo-1519183071298-a2962ccdaff2?auto=format&fit=crop&w=400&q=80'
+      }
+    ];
+
+    const productsContainer = document.getElementById('products');
+
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img class="product-img" src="${product.img}" alt="${product.name}" />
+        <div class="product-info">
+          <div class="product-name">${product.name}</div>
+          <div class="product-description">${product.description}</div>
+          <div class="product-price">${product.price}</div>
+        </div>
+      `;
+      productsContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
