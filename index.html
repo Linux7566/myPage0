@@ -4,20 +4,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Веб-сайт</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Современный одностраничный сайт</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: rgba(255,255,255,0.9);
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.95);
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    main h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #004aad;
+      text-align: center;
+    }
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #444;
+    }
+    .btn {
+      display: block;
+      width: 180px;
+      margin: 0 auto 40px;
+      padding: 12px 0;
+      background: #004aad;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,74,173,0.4);
+      transition: background 0.3s ease;
+      user-select: none;
+      border: none;
+    }
+    .btn:hover {
+      background: #002f6c;
+      box-shadow: 0 6px 15px rgba(0,47,108,0.6);
+    }
+    #message {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #008000;
+      font-weight: 600;
+      min-height: 24px;
+    }
+    footer {
+      background: rgba(255,255,255,0.9);
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      color: #666;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 480px) {
+      main {
+        margin: 20px 15px;
+        padding: 25px 20px;
+      }
+      main h1 {
+        font-size: 2rem;
+      }
+      .btn {
+        width: 140px;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>Маркетплейс</header>
-
+  <header>Мой Крутой Сайт</header>
   <main>
-    <h2>Наши товары</h2>
-    <div class="products" id="products">
-      <!-- Карточки товаров появятся здесь -->
-    </div>
+    <h1>Добро пожаловать!</h1>
+    <p>Здесь вы можете узнать больше о наших услугах и связаться с нами. Мы всегда рады помочь вам в реализации любых идей и проектов.</p>
+    <button class="btn" id="actionBtn">Нажми меня</button>
+    <div id="message"></div>
   </main>
+  <footer>© 2024 Все права защищены</footer>
 
-  <footer>© 2024 Маркетплейс</footer>
-  <script src="script.js"></script>
+  <script>
+    const btn = document.getElementById('actionBtn');
+    const msg = document.getElementById('message');
+
+    btn.addEventListener('click', () => {
+      const greetings = [
+        'Спасибо за нажатие! 😊',
+        'Рады видеть вас на сайте!',
+        'Желаем вам отличного дня!',
+        'Вы молодец, что сюда заглянули!',
+        'Пусть ваш проект будет успешным!'
+      ];
+      const randomIndex = Math.floor(Math.random() * greetings.length);
+      msg.textContent = greetings[randomIndex];
+      
+      // На 3 секунды показываем сообщение, затем скрываем
+      setTimeout(() =>
+      { msg.textContent = ''; }, 3000);
+    });
+  </script>
 </body>
 </html>
+
